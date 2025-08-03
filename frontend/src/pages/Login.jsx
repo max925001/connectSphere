@@ -24,7 +24,6 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50 py-6 px-4 sm:px-6 lg:px-8">
-      <Toaster position="top-right" />
       <div className="w-full max-w-md sm:max-w-lg bg-white p-8 rounded-2xl shadow-md">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Welcome Back</h2>
