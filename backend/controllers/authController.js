@@ -60,7 +60,11 @@ export const login = async (req, res) => {
 user.password= undefined
     const token = await user.generateJWTtoken();
     res.cookie('token', token, {
+<<<<<<< HEAD
       maxAge: 7*24*60*60*1000,
+=======
+       maxAge: 7*24*60*60*1000,
+>>>>>>> 926b3c9e9a6815c30548b21cd5f23232e7603c98
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production' ? true : false,
     sameSite:'None',
