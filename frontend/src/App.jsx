@@ -43,7 +43,7 @@ const App = () => {
 
   return (
     <>
-      <Toaster position="top-right" />
+      <Toaster position='top-center' />
       <Routes>
         <Route path="/login" element={isLoggedIn && user ? <Navigate to="/" /> : <Login />} />
         <Route path="/register" element={isLoggedIn && user ? <Navigate to="/" /> : <Register />} />

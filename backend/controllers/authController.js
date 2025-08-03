@@ -25,9 +25,11 @@ export const register = async (req, res) => {
     await user.save();
     const token = await user.generateJWTtoken();
     res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+       maxAge: 7*24*60*60*1000,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production' ? true : false,
+    sameSite:'None',
+    secure: true
     });
 
     res.status(201).json({
@@ -58,9 +60,11 @@ export const login = async (req, res) => {
 user.password= undefined
     const token = await user.generateJWTtoken();
     res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: 7*24*60*60*1000,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production' ? true : false,
+    sameSite:'None',
+    secure: true
     });
 
     res.status(200).json({
@@ -124,19 +128,7 @@ export const getProfile = async (req, res) => {
   }
 };
 
-export const getCurrentUser = async (req, res) => {
-  try {
-    
-    const user = await User.findById(req.user.id).select('-password');
-    console.log(user)
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    res.status(200).json({ user });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-};
+
 
 export const getProfileViews = async (req, res) => {
   try {

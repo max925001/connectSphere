@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL =   "http://localhost:5001/api/"
+const BASE_URL =   "https://connectsphere-1.onrender.com/api/"
 
 const axiosInstance = axios.create();
 axiosInstance.defaults.baseURL = BASE_URL;
