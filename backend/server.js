@@ -26,6 +26,9 @@ app.use('/uploads', express.static('uploads'));
 
 connectDB();
 app.use(morgan('dev'));
+app.use('/ping' ,(req,res) =>{
+    res.send('/pong')
+})
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 
